@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextInput, Button, StyleSheet, View } from 'react-native';
+import { TextInput, Button, StyleSheet, View, Modal } from 'react-native';
 
 export default function GoalInput(props) {
     const [enteredGoal, setEnteredGoal] = useState('');
@@ -8,27 +8,46 @@ export default function GoalInput(props) {
         setEnteredGoal(enteredText);
     }
 
+    const addGoalHandler = () => {
+        props.addGoalHandler(enteredGoal);
+        setEnteredGoal('');
+    }
+
     return (
-        <View style={ styles.inputContainer }>
-            <TextInput
-            placeholder='Course Goal' 
-            style={ styles.input } 
-            onChangeText={goalInputHandler}
-            value={enteredGoal}
-            />
-            <Button title="ADD" style={{ padding: 5 }} onPress={() => props.addGoalHandler(enteredGoal)}/>
-        </View>
+        <Modal visible={props.isAddMode} animationType='slide'>
+            <View style={ styles.inputContainer }>
+                <TextInput
+                placeholder='Course Goal' 
+                style={ styles.input } 
+                onChangeText={goalInputHandler}
+                value={enteredGoal}
+                />
+                <View style={styles.btnContainer}>
+                    <Button title='CANCEL' color='red' onPress={props.cancelGoal} />
+                    <Button title="ADD" style={{ padding: 5 }} onPress={addGoalHandler}/>
+                </View>
+            </View>
+        </Modal>
     )
 }
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     input: {
         width: '80%',
         borderColor: 'black', 
         borderWidth: 1,
+        padding: 10,
+        marginBottom: 10
+    },
+    btnContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '50%'
     }
 })
