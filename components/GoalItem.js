@@ -6,6 +6,7 @@ const GoalItem = props => {
     <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
         <View style={styles.listItem} on>
             <Text>{props.title}</Text>
+            <Text>Added on: {props.added}</Text>
         </View>
     </TouchableOpacity>
     )
