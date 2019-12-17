@@ -8,7 +8,7 @@ export default function Login(props) {
         <View style={styles.inputContainer}>
             <Text style={styles.heading}>Login</Text>
             <TextInput style={styles.input} placeholder='Username' returnKeyType={'next'} onSubmitEditing={() => nextButton.current.focus()} />
-            <TextInput ref={nextButton} style={styles.input} placeholder='password' secureTextEntry={true} returnKeyType='done' autoCapitalize='none' autoCorrect={false} />
+            <TextInput ref={nextButton} style={styles.input} placeholder='password' secureTextEntry={true} returnKeyType='done' autoCapitalize='none' autoCorrect={false} onSubmitEditing={() => props.navigation.navigate('GoalPage')}/>
             <Button title='Login' onPress={() => props.navigation.navigate('GoalPage')}/>
         </View>
     )
