@@ -21,7 +21,7 @@ export default function Login(props) {
                     Alert('You must provide a password to login')
                 } else {
                     props.navigation.navigate('GoalPage')
-                })
+                }
             }}/>
         </View>
     )
