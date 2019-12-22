@@ -2,11 +2,15 @@ import React from 'react';
 import GoalPage from './components/GoalPage';
 import Login from './components/Login';
 import Register from './components/Register';
+import LandingPage from './components/LandingPage'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
 const AppNavigator = createStackNavigator(
   {
+    LandingPage: {
+      screen: LandingPage
+    },
     Login: {
       screen: Login
     },

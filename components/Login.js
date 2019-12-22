@@ -16,9 +16,9 @@ export default function Login(props) {
             <TextInput ref={nextButton} style={styles.input} placeholder='password' secureTextEntry={true} returnKeyType='done' autoCapitalize='none' autoCorrect={false} onSubmitEditing={() => props.navigation.navigate('GoalPage')} onChange={password => setInitalState({...initlaState, password})}/>
             <Button title='Login' onPress={() => {
                 if(initlaState.username.length === 0) {
-                    Alert('You must provide a username before logging in')
+                    Alert.alert('You must provide a username before logging in')
                 } else if (initlaState.password.length === 0) {
-                    Alert('You must provide a password to login')
+                    Alert.alert('You must provide a password to login')
                 } else {
                     props.navigation.navigate('GoalPage')
                 }
